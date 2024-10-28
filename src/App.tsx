@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ConfigProvider, Space, Divider } from 'antd';
+import FormHelper from './FormHelper';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: React.FC = () => (
+  <ConfigProvider
+    theme={{
+      components: {
+        Button: {
+          colorPrimary: '#00b96b',
+          algorithm: true,
+        },
+        Input: {
+          colorPrimary: '#eb2f96',
+          algorithm: true,
+        }
+      },
+    }}
+  >
+    <Space direction="vertical" style={{ width: '100%', padding: '20px' }}>
+      <h1>Form Helper with Gemini Nano</h1>
+      <Divider />
+      <FormHelper />
+    </Space>
+  </ConfigProvider>
+);
 
 export default App;
