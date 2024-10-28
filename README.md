@@ -1,46 +1,44 @@
-# Getting Started with Create React App
+# Form Helper with Gemini Nano
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A real-time form helper using Chrome's built-in AI (Gemini Nano). This project demonstrates AI-powered assistance during form completion using a sign-up form example.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Real-time AI assistance with Chrome's Gemini Nano
+- Interactive form with instant validation
+- AI-generated help messages for error correction
+- Responsive design with Ant Design
 
-### `yarn start`
+## Quick Start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Clone repo
+2. `npm install`
+3. `npm start`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Usage
 
-### `yarn test`
+1. Fill the form
+2. Get real-time validation and AI help
+3. Use 'Fill Sample Data' for error examples
+4. 'Clear' to reset
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech Stack
 
-### `yarn build`
+- React (TypeScript)
+- Ant Design
+- Chrome's Gemini Nano
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `src/FormHelper.tsx`: Main component
+- `src/formGuide.ts`: AI guide
+- `src/App.tsx`: Root component
+- `src/index.tsx`: Entry point
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contribute
 
-### `yarn eject`
+PRs welcome!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## License
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+MIT
