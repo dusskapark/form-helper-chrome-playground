@@ -15,6 +15,7 @@
     "@types/styled-components": "^5.1.34",
     "antd": "^5.21.5",
     "dompurify": "^3.1.7",
+    "form-helper-chrome": "file:../form-helper-chrome",
     "marked": "^14.1.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

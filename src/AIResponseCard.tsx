@@ -45,32 +45,17 @@ const DEFAULT_OUTPUT_FORMAT = `
 `;
 
 // Styled components (unchanged)
-const Card = styled.div<ThemeProps>`
-  border: 1px solid ${props => props.isDarkMode ? '#333' : '#e8e8e8'};
+const Card = styled.div<{ $isDarkMode?: boolean }>`
+  border: 1px solid ${props => props.$isDarkMode ? '#333' : '#e8e8e8'};
   border-radius: 8px;
   height: 100%;
-  background-color: ${props => props.isDarkMode ? '#2a2a2a' : '#f5f5f5'};
-  color: ${props => props.isDarkMode ? '#ffffff' : '#000000'};
-  
+  background-color: ${props => props.$isDarkMode ? '#2a2a2a' : '#f5f5f5'};
+  color: ${props => props.$isDarkMode ? '#ffffff' : '#000000'};
 `;
 
-const CardContent = styled.div<ThemeProps>`
+const CardContent = styled.div<{ $isDarkMode?: boolean }>`
   min-height: 120px;
   padding: 24px;
-`;
-
-const LoadingSpinner = styled.div`
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  border: 3px solid rgba(0,0,0,.1);
-  border-radius: 50%;
-  border-top-color: #333;
-  animation: spin 1s ease-in-out infinite;
-  
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
 `;
 
 const EmptyMessage = styled.div`
@@ -181,9 +166,9 @@ const AIResponseCard: React.FC<AIResponseCardProps & ThemeProps> = ({
   };
 
   return (
-    <Card isDarkMode={isDarkMode}>
+    <Card $isDarkMode={isDarkMode}>
       <CardTitle isDarkMode={isDarkMode} />
-      <CardContent isDarkMode={isDarkMode}>
+      <CardContent $isDarkMode={isDarkMode}>
         {helpMessage ? (
           <MarkdownContent
             fontSize={fontSize}

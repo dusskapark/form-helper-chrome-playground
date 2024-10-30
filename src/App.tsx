@@ -1,9 +1,27 @@
-import React, { useState } from 'react';
-import { ConfigProvider, Form, Input, Button, Card, Row, Col, Drawer, Select, Radio, Space, Divider } from 'antd';
+import React, { useState } from "react";
+import {
+  ConfigProvider,
+  Form,
+  Input,
+  Button,
+  Card,
+  Row,
+  Col,
+  Drawer,
+  Select,
+  Radio,
+  Space,
+  Divider,
+  Switch,
+  theme,
+} from "antd";
 import DOMPurify from "dompurify";
 import { marked } from "marked";
 import { formGuide } from "./formGuide";
-import AIResponseCard from './AIResponseCard';
+import AIResponseCard from "./AIResponseCard";
+// import { FormHelperChrome } from 'form-helper-chrome';
+
+const { defaultAlgorithm, darkAlgorithm, compactAlgorithm } = theme;
 
 const { TextArea } = Input;
 const { Option } = Select;
@@ -17,12 +35,20 @@ interface FormError {
 
 const App: React.FC = () => {
   const [form] = Form.useForm();
-  const [currentError, setCurrentError] = useState<FormError | undefined>(undefined);
+  const [currentError, setCurrentError] = useState<FormError | undefined>(
+    undefined
+  );
   const [isDrawerVisible, setIsDrawerVisible] = useState<boolean>(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   const onFieldsChange = (changedFields: any) => {
     const changedField = changedFields[0];
-    if (changedField && changedField.errors.length > 0 && changedField.touched && changedField.value !== undefined) {
+    if (
+      changedField &&
+      changedField.errors.length > 0 &&
+      changedField.touched &&
+      changedField.value !== undefined
+    ) {
       setCurrentError(changedField);
     } else {
       setCurrentError(undefined);
@@ -50,20 +76,31 @@ const App: React.FC = () => {
   return (
     <ConfigProvider
       theme={{
+        algorithm: isDarkMode
+          ? [darkAlgorithm, compactAlgorithm]
+          : [defaultAlgorithm, compactAlgorithm],
         components: {
           Button: {
-            colorPrimary: '#00b96b',
+            colorPrimary: "#00b96b",
             algorithm: true,
           },
           Input: {
-            colorPrimary: '#eb2f96',
+            colorPrimary: "#eb2f96",
             algorithm: true,
-          }
+          },
         },
       }}
     >
-      <Space direction="vertical" style={{ width: '100%', padding: '20px' }}>
-        <h1>Form Helper with Gemini Nano</h1>
+      <Space direction="vertical" style={{ width: "100%", padding: "20px" }}>
+        <Row justify="space-between" align="middle">
+          <h1>Form Helper with Gemini Nano</h1>
+          <Switch
+            checkedChildren="Dark"
+            unCheckedChildren="Light"
+            checked={isDarkMode}
+            onChange={(checked) => setIsDarkMode(checked)}
+          />
+        </Row>{" "}
         <Divider />
         <Row gutter={16}>
           <Col span={16}>
@@ -89,7 +126,8 @@ const App: React.FC = () => {
                     { required: true, message: "Please input your username" },
                     {
                       pattern: /^[a-zA-Z0-9-_.&,/()]{1,255}$/,
-                      message: "Username can only contain a-zA-Z0-9-_.&,/(), max 255 characters",
+                      message:
+                        "Username can only contain a-zA-Z0-9-_.&,/(), max 255 characters",
                     },
                     {
                       validator: async (_, value) => {
@@ -146,7 +184,9 @@ const App: React.FC = () => {
                 <Form.Item
                   name="gender"
                   label="Gender"
-                  rules={[{ required: true, message: "Please select your gender" }]}
+                  rules={[
+                    { required: true, message: "Please select your gender" },
+                  ]}
                 >
                   <Radio.Group>
                     <Radio value="male">Male</Radio>
@@ -205,8 +245,11 @@ const App: React.FC = () => {
           </Col>
           <Col span={8}>
             <AIResponseCard
-              formGuideHtml={DOMPurify.sanitize(marked.parse(formGuide) as string)}
+              formGuideHtml={DOMPurify.sanitize(
+                marked.parse(formGuide) as string
+              )}
               error={currentError}
+              isDarkMode={isDarkMode}
             />
           </Col>
         </Row>
