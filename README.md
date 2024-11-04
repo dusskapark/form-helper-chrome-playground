@@ -1,6 +1,6 @@
-# Form Helper with Gemini Nano
+# Form Helper Chrome Playground
 
-A real-time form helper using Chrome's built-in AI (Gemini Nano). This project demonstrates AI-powered assistance during form completion using a sign-up form example.
+This project serves as a playground for testing and demonstrating the capabilities of the `form-helper-chrome` package. It provides a real-time form helper using Chrome's built-in AI (Gemini Nano) to enhance form error handling.
 
 ## Features
 
@@ -11,34 +11,13 @@ A real-time form helper using Chrome's built-in AI (Gemini Nano). This project d
 
 ## Quick Start
 
-1. Clone repo
-2. `npm install`
-3. `npm start`
+1. Clone the repository
+2. Run `npm install` to install dependencies
+3. Run `npm start` to start the development server
 
 ## Usage
 
-1. Fill the form
-2. Get real-time validation and AI help
-3. Use 'Fill Sample Data' for error examples
-4. 'Clear' to reset
+1. Fill out the form to see real-time validation and AI help
+2. Use 'Fill Sample Data' to generate error examples
+3. Click 'Clear' to reset the form
 
-## Tech Stack
-
-- React (TypeScript)
-- Ant Design
-- Chrome's Gemini Nano
-
-## Structure
-
-- `src/FormHelper.tsx`: Main component
-- `src/formGuide.ts`: AI guide
-- `src/App.tsx`: Root component
-- `src/index.tsx`: Entry point
-
-## Contribute
-
-PRs welcome!
-
-## License
-
-MIT

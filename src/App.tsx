@@ -18,8 +18,7 @@ import {
 import DOMPurify from "dompurify";
 import { marked } from "marked";
 import { formGuide } from "./formGuide";
-import AIResponseCard from "./AIResponseCard";
-// import { FormHelperChrome } from 'form-helper-chrome';
+import { FormHelperChrome, createPrompt } from "form-helper-chrome";
 
 const { defaultAlgorithm, darkAlgorithm, compactAlgorithm } = theme;
 
@@ -72,6 +71,10 @@ const App: React.FC = () => {
     form.resetFields();
     setCurrentError(undefined);
   };
+
+  const prompt = currentError
+    ? createPrompt(currentError, DOMPurify.sanitize(marked.parse(formGuide) as string))
+    : "";
 
   return (
     <ConfigProvider
@@ -244,11 +247,9 @@ const App: React.FC = () => {
             </Card>
           </Col>
           <Col span={8}>
-            <AIResponseCard
-              formGuideHtml={DOMPurify.sanitize(
-                marked.parse(formGuide) as string
-              )}
-              error={currentError}
+            <FormHelperChrome
+              prompt={prompt}
+              fontSize="14px"
               isDarkMode={isDarkMode}
             />
           </Col>
