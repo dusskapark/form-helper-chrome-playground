@@ -2,6 +2,8 @@
 
 This project serves as a playground for testing and demonstrating the capabilities of the `form-helper-chrome` package. It provides a real-time form helper using Chrome's built-in AI (Gemini Nano) to enhance form error handling.
 
+![demo](demo.gif)
+
 ## Features
 
 - Real-time AI assistance with Chrome's Gemini Nano
